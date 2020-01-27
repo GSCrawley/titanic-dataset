@@ -14,6 +14,7 @@ function handleData(data) {
 
   // *** Visualize Data ***
   showSurvived(fields)
+  showEmbarked(fields)
 
 }
 
@@ -43,17 +44,74 @@ function showSurvived(fields) {
   document.getElementById("survivor-count").innerHTML = `${survivorCount}`
   document.getElementById("death-count").innerHTML = `${deathCount}`
 
-  // const survivorStat = document.createElement("p")
-  // const survivorNode = document.createTextNode(`Number of survivors: ${survivorCount}`)
-  // survivorStat.appendChild(survivorNode)
-  // rootSurvived.appendChild(survivorStat)
-  //
-  // const deathStat = document.createElement("p")
-  // const deathNode = document.createTextNode(`Number of fatalities: ${deathCount}`)
-  // deathStat.appendChild(deathNode)
-  // rootSurvived.appendChild(deathStat)
 }
 
 function showEmbarked(fields) {
+  const rootSurvived = document.getElementById("root-survived")
+  let firstClassCount = 0
+  let firstC = 0
+  let firstQ = 0
+  let firstS = 0
+  let secondClassCount = 0
+  let secondC = 0
+  let secondQ = 0
+  let secondS = 0
+  let thirdClassCount = 0
+  let thirdC = 0
+  let thirdQ = 0
+  let thirdS = 0
+  fields.forEach((passenger) => {
+    if (passenger.pclass === 1) {
+      firstClassCount += 1
+      if (passenger.embarked === "C") {
+        firstC += 1
+      }
+      else if (passenger.embarked === "Q") {
+        firstQ += 1
+      }
+      else if (passenger.embarked === "S") {
+        firstS += 1
+      }
+    }
+    else if (passenger.pclass === 2) {
+      secondClassCount += 1
+      if (passenger.embarked === "C") {
+        secondC += 1
+      }
+      else if (passenger.embarked === "Q") {
+        secondQ += 1
+      }
+      else if (passenger.embarked === "S") {
+        secondS += 1
+      }
+    }
+    else if (passenger.pclass === 3) {
+      thirdClassCount += 1
+      if (passenger.embarked === "C") {
+        thirdC += 1
+      }
+      else if (passenger.embarked === "Q") {
+        thirdQ += 1
+      }
+      else if (passenger.embarked === "S") {
+        thirdS += 1
+      }
+    }
+  })
+  console.log(`Total first class: ${firstClassCount}`)
+  console.log(`First class C: ${firstC}`)
+  console.log(`First class Q: ${firstQ}`)
+  console.log(`First class S: ${firstS}`)
+  console.log(`Total second class: ${secondClassCount}`)
+  console.log(`Second class C: ${secondC}`)
+  console.log(`Second class Q: ${secondQ}`)
+  console.log(`Second class S: ${secondS}`)
+  console.log(`Total third class: ${thirdClassCount}`)
+  console.log(`Third class C: ${thirdC}`)
+  console.log(`Third class Q: ${thirdQ}`)
+  console.log(`Third class S: ${thirdS}`)
+}
 
+function normalize(value, maxValue) {
+  return value / maxValue
 }
