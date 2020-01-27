@@ -47,7 +47,15 @@ function showSurvived(fields) {
 }
 
 function showEmbarked(fields) {
-  const rootSurvived = document.getElementById("root-survived")
+  const rootFirstC = document.getElementById("embarked-firstC")
+  const rootFirstQ = document.getElementById("embarked-firstQ")
+  const rootFirstS = document.getElementById("embarked-firstS")
+  const rootSecondC = document.getElementById("embarked-secondC")
+  const rootSecondQ = document.getElementById("embarked-secondQ")
+  const rootSecondS = document.getElementById("embarked-secondS")
+  const rootThirdC = document.getElementById("embarked-thirdC")
+  const rootThirdQ = document.getElementById("embarked-thirdQ")
+  const rootThirdS = document.getElementById("embarked-thirdS")
   let firstClassCount = 0
   let firstC = 0
   let firstQ = 0
@@ -110,6 +118,10 @@ function showEmbarked(fields) {
   console.log(`Third class C: ${thirdC}`)
   console.log(`Third class Q: ${thirdQ}`)
   console.log(`Third class S: ${thirdS}`)
+
+  rootFirstC.style.backgroundColor = "red"
+  rootFirstC.style.height = `${normalize(firstC, firstClassCount)}px`
+
 }
 
 function normalize(value, maxValue) {

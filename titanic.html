@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="titanic.css" />
   </head>
   <body>
 
@@ -21,23 +22,26 @@
       </p>
     </div>
 
-    <div id="embarcation-by-class-stats">
+    <div class="embark-by-class-stats">
       <h2>Embarcation By Class Stats</h2>
-      <div id="first-embarked">
-        <div id="embarked-firstC"></div>
-        <div id="embarked-firstQ"></div>
-        <div id="embarked-firstS"></div>
+      <div class="embark-container">
+        <div class="first-embarked">
+          <div style="backgroundColor:red;height:200px" id="embarked-firstC"></div>
+          <div id="embarked-firstQ"></div>
+          <div id="embarked-firstS"></div>
+        </div>
+        <div class="second-embarked">
+          <div id="embarked-secondC"></div>
+          <div id="embarked-secondQ"></div>
+          <div id="embarked-secondS"></div>
+        </div>
+        <div class="third-embarked">
+          <div id="embarked-thirdC"></div>
+          <div id="embarked-thirdQ"></div>
+          <div id="embarked-thirdS"></div>
+        </div>
       </div>
-      <div id="second-embarked">
-        <div id="embarked-secondC"></div>
-        <div id="embarked-secondQ"></div>
-        <div id="embarked-secondS"></div>
-      </div>
-      <div id="third-embarked">
-        <div id="embarked-thirdC"></div>
-        <div id="embarked-thirdQ"></div>
-        <div id="embarked-thirdS"></div>
-      </div>
+
     </div>
 
     <script src="titanic.js"></script>
