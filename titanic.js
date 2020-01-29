@@ -15,6 +15,7 @@ function handleData(data) {
   // *** Visualize Data ***
   showSurvived(fields)
   showGender(fields)
+  showClass(fields)
   showEmbarked(fields)
 
 }
@@ -77,7 +78,49 @@ function showGender(fields) {
 }
 
 function showClass(fields) {
-  
+  const rootClass = document.getElementById("root-class")
+  rootClass.style.display = "flex"
+  rootClass.style.flexWrap = "wrap"
+  let firstCount = 0
+  let secondCount = 0
+  let thirdCount = 0
+  // fields.forEach(passenger => {
+  //   if (passenger.pclass = 1) {
+  //     firstCount += 1
+  //   }
+  //   else if (passenger.pclass = 2) {
+  //     secondCount += 1
+  //   }
+  //   else if (passenger.pclass = 3) {
+  //     thirdCount += 1
+  //   }
+  // })
+
+  fields.forEach((passenger) => {
+    const el = document.createElement("div")
+    rootClass.appendChild(el)
+    if (passenger.pclass == 1) {
+      firstCount += 1
+      el.style.backgroundColor = "#738D37"
+    }
+    else if (passenger.pclass == 2) {
+      secondCount += 1
+      el.style.backgroundColor = "#FBC00E"
+    }
+    else if (passenger.pclass == 3) {
+      thirdCount += 1
+      el.style.backgroundColor = "#D62B83"
+    }
+    el.style.height = "10px"
+    el.style.width = "10px"
+    el.style.margin = "1px"
+  })
+
+  document.getElementById("first-class-count").innerHTML = `${firstCount}`
+  document.getElementById("second-class-count").innerHTML = `${secondCount}`
+  document.getElementById("third-class-count").innerHTML = `${thirdCount}`
+
+
 }
 
 function showEmbarked(fields) {
