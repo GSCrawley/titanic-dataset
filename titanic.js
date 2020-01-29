@@ -14,6 +14,7 @@ function handleData(data) {
 
   // *** Visualize Data ***
   showSurvived(fields)
+  showGender(fields)
   showEmbarked(fields)
 
 }
@@ -44,6 +45,39 @@ function showSurvived(fields) {
   document.getElementById("survivor-count").innerHTML = `${survivorCount}`
   document.getElementById("death-count").innerHTML = `${deathCount}`
 
+}
+
+function showGender(fields) {
+  const rootGender = document.getElementById("root-gender")
+  rootGender.style.display = "flex"
+  rootGender.style.flexWrap = "wrap"
+  let maleCount = 0
+  let femaleCount = 0
+  fields.forEach((passenger) => {
+    if (passenger.sex == "male") {
+      maleCount += 1
+    } else {
+      femaleCount +=1
+    }
+  })
+
+  fields.forEach((passenger) => {
+    const el = document.createElement("div")
+    rootGender.appendChild(el)
+    el.style.backgroundColor = passenger.sex === "male" ? "#0080ff" : "#ffc0cb"
+    el.style.borderRadius = passenger.sex === "female" ? "50%" : "0%"
+    el.style.height = "10px"
+    el.style.width = "10px"
+    el.style.margin = "1px"
+  })
+
+  document.getElementById("male-count").innerHTML = `${maleCount}`
+  document.getElementById("female-count").innerHTML = `${femaleCount}`
+
+}
+
+function showClass(fields) {
+  
 }
 
 function showEmbarked(fields) {

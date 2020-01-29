@@ -1,3 +1,8 @@
+body {
+  background-color: #272727;
+  color: #f0f0f0;
+}
+
 .embark-container {
   display: flex;
   flex-direction: row;
@@ -23,4 +28,10 @@
   width: 150px;
   border-width: 2px;
   background-color: #989898;
+}
+
+#embarked-firstC {
+  background-color: yellow;
+  height: 100px;
+  width: 20px;
 }
