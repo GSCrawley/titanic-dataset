@@ -17,10 +17,18 @@ let showEmbarked = false
     const ages = fields.map(({age}) => age)
     const maxFare = Math.max(...fares)
 
-
+    // "Show" buttons
     const buttonGender = document.getElementById("button-gender")
     const buttonSurvived = document.getElementById("button-survived")
     const buttonEmbarked = document.getElementById("button-embarked")
+
+    // "Sort" buttons
+    const sortGender = document.getElementById("sort-gender")
+    const sortSurvived = document.getElementById("sort-survived")
+    const sortEmbarked = document.getElementById("sort-embarked")
+
+    // Parent of passengers: main-data
+    const mainData = document.getElementById("main-data")
 
     // let showGender = false
     // let showSurvived = false
@@ -31,7 +39,8 @@ let showEmbarked = false
 
     console.log(elements)
 
-    // *** Callbacks ***
+    // *** Event Handlers ***
+    // Show data buttons
     buttonGender.addEventListener("click", (e) => {
       showGender = !showGender
       if (showGender) {
@@ -60,6 +69,22 @@ let showEmbarked = false
       } else {
         e.target.classList.remove("button-selected")
       }
+    })
+
+    // Sort buttons
+    sortGender.addEventListener("click", (e) => {
+      console.log("Sort gender")
+      passengerData.sort((a, b) => {
+        return a.sex === "male" ? -1 : 1
+      })
+      displayByGender()
+      displayBySurvived()
+      displayByEmbarked()
+    })
+
+    // Show passenger on click
+    mainData.addEventListener("click", (e) => {
+      
     })
 
   }
@@ -105,7 +130,6 @@ let showEmbarked = false
     passengerData.forEach((object, i) => {
       const el = elements[i]
       const embarked = object.embarked
-      console.log(embarked)
       if (showEmbarked) {
         el.style.borderStyle = "solid"
         el.style.borderWidth = "2px"
