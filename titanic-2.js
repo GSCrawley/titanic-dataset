@@ -1,4 +1,4 @@
-
+// Wrapping all code into an IIFE to avoid global variables
 (function() {
 
 
@@ -10,14 +10,6 @@
   const passengerSex = document.getElementById("passenger-sex")
   const passengerSurvived = document.getElementById("passenger-survived")
 
-
-
-
-  fetch('titanic-passengers.json')
-    .then(res => res.json())
-    .then(json => handleData(json))
-    .catch(err => console.log(err.message))
-
   const elements = []
   const passengerData = []
 
@@ -25,91 +17,119 @@
   let showSurvived = false
   let showEmbarked = false
 
-    function handleData(data) {
 
-      const fields = data.map(passenger => passenger.fields)
-      const fares = fields.map(({ fare }) => fare)
-      const ages = fields.map(({age}) => age)
-      const maxFare = Math.max(...fares)
-
-      // "Show" buttons
-      const buttonGender = document.getElementById("button-gender")
-      const buttonSurvived = document.getElementById("button-survived")
-      const buttonEmbarked = document.getElementById("button-embarked")
-
-      // "Sort" buttons
-      const sortGender = document.getElementById("sort-gender")
-      const sortSurvived = document.getElementById("sort-survived")
-      const sortEmbarked = document.getElementById("sort-embarked")
-
-      // Parent of passengers: main-data
-      const mainData = document.getElementById("main-data")
+  fetch('titanic-passengers.json')
+    .then(res => res.json())
+    .then(json => handleData(json))
+    .catch(err => console.log(err.message))
 
 
-      // let showGender = false
-      // let showSurvived = false
-      // let showEmbarked = false
 
-      // *** Visualize Data ***
-      showAll(fields)
+  function handleData(data) {
 
-      console.log(elements)
+    const fields = data.map(passenger => passenger.fields)
+    const fares = fields.map(({ fare }) => fare)
+    const ages = fields.map(({age}) => age)
+    const maxFare = Math.max(...fares)
 
-      // *** Event Handlers ***
-      // Show data buttons
-      buttonGender.addEventListener("click", (e) => {
-        showGender = !showGender
-        if (showGender) {
-          e.target.classList.add("button-selected")
-        } else {
-          e.target.classList.remove("button-selected")
-        }
-        displayByGender()
+    // "Show" buttons
+    const buttonGender = document.getElementById("button-gender")
+    const buttonSurvived = document.getElementById("button-survived")
+    const buttonEmbarked = document.getElementById("button-embarked")
+
+    // "Sort" buttons
+    const sortGender = document.getElementById("sort-gender")
+    const sortSurvived = document.getElementById("sort-survived")
+    const sortEmbarked = document.getElementById("sort-embarked")
+
+    // Parent of passengers: main-data
+    const mainData = document.getElementById("main-data")
+
+
+
+    // *** Visualize Data ***
+    showAll(fields)
+
+
+    // *** Event Handlers ***
+    // Show data buttons
+    buttonGender.addEventListener("click", (e) => {
+      showGender = !showGender
+      displayByGender()
+      if (showGender) {
+        e.target.classList.add("button-selected")
+      } else {
+        e.target.classList.remove("button-selected")
+      }
+
+    })
+
+    buttonSurvived.addEventListener("click", (e) => {
+      showSurvived = !showSurvived
+      displayBySurvived()
+      if (showSurvived) {
+        e.target.classList.add("button-selected")
+      } else {
+        e.target.classList.remove("button-selected")
+      }
+    })
+
+    buttonEmbarked.addEventListener("click", (e) => {
+      showEmbarked = !showEmbarked
+      displayByEmbarked()
+      if (showEmbarked) {
+        e.target.classList.add("button-selected")
+      } else {
+        e.target.classList.remove("button-selected")
+      }
+    })
+
+    // Sort buttons
+    sortGender.addEventListener("click", (e) => {
+      console.log("Sort gender")
+      passengerData.sort((a, b) => {
+        return a.sex === "male" ? -1 : 1
       })
+      displayByGender()
+      displayBySurvived()
+      displayByEmbarked()
+    })
 
-      buttonSurvived.addEventListener("click", (e) => {
-        showSurvived = !showSurvived
-        displayBySurvived()
-        if (showSurvived) {
-          e.target.classList.add("button-selected")
-        } else {
-          e.target.classList.remove("button-selected")
-        }
+    sortSurvived.addEventListener("click", (e) => {
+      console.log("Sort survived")
+      passengerData.sort((a, b) => {
+        return a.survived === "Yes" ? -1 : 1
       })
+      displayByGender()
+      displayBySurvived()
+      displayByEmbarked()
+    })
 
-      buttonEmbarked.addEventListener("click", (e) => {
-        showEmbarked = !showEmbarked
-        displayByEmbarked()
-        if (showEmbarked) {
-          e.target.classList.add("button-selected")
-        } else {
-          e.target.classList.remove("button-selected")
-        }
+    sortEmbarked.addEventListener("click", (e) => {
+      console.log("Sort survived")
+      passengerData.sort((a, b) => {
+        const x = a.embarked != undefined ? a.embarked.charCodeAt(0) : 0
+        const y = b.embarked != undefined ? b.embarked.charCodeAt(0) : 0
+        return x - y
       })
+      displayByGender()
+      displayBySurvived()
+      displayByEmbarked()
+    })
 
-      // Sort buttons
-      sortGender.addEventListener("click", (e) => {
-        console.log("Sort gender")
-        passengerData.sort((a, b) => {
-          return a.sex === "male" ? -1 : 1
-        })
-        displayByGender()
-        displayBySurvived()
-        displayByEmbarked()
-      })
 
-      // Show passenger on hover
-      mainData.addEventListener("mouseover", (e) => {
-        const index = e.target.dataset.index
-        showPassengerData(index)
-      })
+    // Show passenger on hover
+    mainData.addEventListener("mouseover", (e) => {
+      const index = e.target.dataset.index
+      showPassengerData(index)
+    })
 
-      // Hide passenger when hover off
-      mainData.addEventListener("mouseout", (e) => {
-        passengerCard.style.display = "none"
-      })
+    // Hide passenger when hover off
+    mainData.addEventListener("mouseout", (e) => {
+      passengerCard.style.display = "none"
+    })
 
-    }
+  }
 
   function showAll(fields) {
     const rootData = document.getElementById("main-data")
@@ -124,7 +144,7 @@
       passengerData.push(passenger) // Store the passenger
       el.style.width = "25px"
       el.style.height = "25px"
-      el.style.backgroundColor = "black"
+      el.style.backgroundColor = "#b6acac"
       el.style.margin = "1px"
       el.style.transition = "200ms"
       el.style.boxSizing = "border-box"
@@ -138,7 +158,7 @@
     passengerData.forEach((object, i) => {
       const el = elements[i]
       const color = object.sex === "male" ? "#0080ff" : "#ffc0cb"
-      el.style.backgroundColor = showGender ? color : "black"
+      el.style.backgroundColor = showGender ? color : "#b6acac"
     })
   }
 
@@ -185,9 +205,7 @@
       passengerSurvived.innerHTML = passengerInfo.survived
 
     }
-
   }
-
 
 
 })()

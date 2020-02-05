@@ -11,9 +11,9 @@ Project can be cloned locally using : `git clone https://github.com/alishalabi/t
 - Can also be used via live link https://alishalabi.github.io/titanic-dataset/index.html
 
 ## Future Iteration
-- [] CSS Styles For Interative
-- [] Finish Off Sorting
-- [] CSS Styles For Index
+- [ ] CSS Styles For Interative
+- [ ] Finish Off Sorting
+- [ ] CSS Styles For Index
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
