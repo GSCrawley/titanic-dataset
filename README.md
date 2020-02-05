@@ -1,11 +1,19 @@
 # Titanic Data Set
 Details
 
+Maximized efficiency by bubbling event delegation/
+
 ## Installation
 Project can be cloned locally using : `git clone https://github.com/alishalabi/titanic-dataset`
 
 ## Usage
+- Can be run locally using a local serve
+- Can also be used via live link https://alishalabi.github.io/titanic-dataset/index.html
 
+## Future Iteration
+- [] CSS Styles For Interative
+- [] Finish Off Sorting
+- [] CSS Styles For Index
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
