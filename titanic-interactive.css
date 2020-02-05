@@ -2,3 +2,14 @@
   background-color: black;
   color: white;
 }
+
+#passenger-card {
+  display: none;
+  border-style: solid;
+  justify-content: space-around;
+  margin-left: 40%;
+  margin-right: 40%;
+  padding: 1%;
+}
+
+/* style cursor/pointer for each cell */

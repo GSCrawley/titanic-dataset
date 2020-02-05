@@ -30,6 +30,14 @@ let showEmbarked = false
     // Parent of passengers: main-data
     const mainData = document.getElementById("main-data")
 
+    // Passenger data field
+    const passengerCard = document.getElementById("passenger-card")
+    const passengerName = document.getElementById("passenger-name")
+    const passengerEmbarked = document.getElementById("passenger-embarked")
+    const passengerAge = document.getElementById("passenger-age")
+    const passengerSex = document.getElementById("passenger-sex")
+    const passengerSurvived = document.getElementById("passenger-survived")
+
     // let showGender = false
     // let showSurvived = false
     // let showEmbarked = false
@@ -84,7 +92,9 @@ let showEmbarked = false
 
     // Show passenger on click
     mainData.addEventListener("click", (e) => {
-      
+      passengerCard.style.display = "block"
+      console.log(e.target)
+      console.log(passengerData[e.target.dataset.index])
     })
 
   }
@@ -95,7 +105,7 @@ let showEmbarked = false
     rootData.style.flexWrap = "wrap"
 
 
-    fields.forEach(passenger => {
+    fields.forEach((passenger, i) => {
       const el = document.createElement('div')
       rootData.appendChild(el)
       elements.push(el)             // store the element
@@ -106,6 +116,8 @@ let showEmbarked = false
       el.style.margin = "1px"
       el.style.transition = "200ms"
       el.style.boxSizing = "border-box"
+
+      el.dataset.index = i
 
     })
   }
