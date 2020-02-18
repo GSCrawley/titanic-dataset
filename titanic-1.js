@@ -136,8 +136,8 @@ function showOnlyWomen(onlyWomen) {
   const rootOnlyWomen = document.getElementById("root-only-women")
   rootOnlyWomen.style.display = "flex"
   rootOnlyWomen.style.flexWrap = "wrap"
-  let menSurvivedCount = 0
-  let menDiedCount = 0
+  let womenSurvivedCount = 0
+  let womenDiedCount = 0
 
   onlyWomen.forEach((passenger) => {
     const el = document.createElement("div")
@@ -147,11 +147,16 @@ function showOnlyWomen(onlyWomen) {
     el.style.margin = "1px"
     if (passenger.survived == "Yes") {
       el.style.backgroundColor = "#ffc0cb"
+      womenSurvivedCount += 1
     }
     else {
       el.style.backgroundColor = "#db5959"
+      womenDiedCount += 1
     }
   });
+
+  document.getElementById("women-survived-count").innerHTML = `${womenSurvivedCount}`
+  document.getElementById("women-fatalities-count").innerHTML = `${womenDiedCount}`
 }
 
 // Filter: Men Survival Stats
@@ -159,8 +164,8 @@ function showOnlyMen(onlyMen) {
   const rootOnlyMen = document.getElementById("root-only-men")
   rootOnlyMen.style.display = "flex"
   rootOnlyMen.style.flexWrap = "wrap"
-  let firstClassSurvivedCount = 0
-  let firstClassDiedCount = 0
+  let menSurvivedCount = 0
+  let menDiedCount = 0
 
   onlyMen.forEach((passenger) => {
     const el = document.createElement("div")
@@ -170,11 +175,16 @@ function showOnlyMen(onlyMen) {
     el.style.margin = "1px"
     if (passenger.survived == "Yes") {
       el.style.backgroundColor = "#0080ff"
+      menSurvivedCount += 1
     }
     else {
       el.style.backgroundColor = "#db5959"
+      menDiedCount += 1
     }
   });
+
+  document.getElementById("men-survived-count").innerHTML = `${menSurvivedCount}`
+  document.getElementById("men-fatalities-count").innerHTML = `${menDiedCount}`
 }
 
 // Filter: First Class Survival Stats
@@ -193,11 +203,15 @@ function showOnlyFirstClass(onlyFirstClass) {
     el.style.margin = "1px"
     if (passenger.survived == "Yes") {
       el.style.backgroundColor = "#738D37"
+      firstClassSurvivedCount += 1
     }
     else {
       el.style.backgroundColor = "#db5959"
+      firstClassDiedCount += 1
     }
   });
+  document.getElementById("first-class-survived-count").innerHTML = `${firstClassSurvivedCount}`
+  document.getElementById("first-class-fatalities-count").innerHTML = `${firstClassDiedCount}`
 }
 
 function showEmbarked(fields) {
