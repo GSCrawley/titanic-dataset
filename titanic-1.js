@@ -12,11 +12,19 @@ function handleData(data) {
   // console.log(`Ages: ${ages}`)
   const maxFare = Math.max(...fares)
 
+  const onlyWomen = fields.filter(({sex}) => sex == "female")
+  const onlyMen = fields.filter(({sex}) => sex == "male")
+  const onlyFirstClass = fields.filter(({pclass}) => pclass == 1)
+
+
   // *** Visualize Data ***
   showSurvived(fields)
   showGender(fields)
   showClass(fields)
-  showEmbarked(fields)
+  // showEmbarked(fields)
+  showOnlyWomen(onlyWomen)
+  showOnlyMen(onlyMen)
+  showOnlyFirstClass(onlyFirstClass)
 
 }
 
@@ -123,6 +131,75 @@ function showClass(fields) {
 
 }
 
+// Filter: Women Survival Stats
+function showOnlyWomen(onlyWomen) {
+  const rootOnlyWomen = document.getElementById("root-only-women")
+  rootOnlyWomen.style.display = "flex"
+  rootOnlyWomen.style.flexWrap = "wrap"
+  let menSurvivedCount = 0
+  let menDiedCount = 0
+
+  onlyWomen.forEach((passenger) => {
+    const el = document.createElement("div")
+    rootOnlyWomen.appendChild(el)
+    el.style.height = "10px"
+    el.style.width = "10px"
+    el.style.margin = "1px"
+    if (passenger.survived == "Yes") {
+      el.style.backgroundColor = "#ffc0cb"
+    }
+    else {
+      el.style.backgroundColor = "#db5959"
+    }
+  });
+}
+
+// Filter: Men Survival Stats
+function showOnlyMen(onlyMen) {
+  const rootOnlyMen = document.getElementById("root-only-men")
+  rootOnlyMen.style.display = "flex"
+  rootOnlyMen.style.flexWrap = "wrap"
+  let firstClassSurvivedCount = 0
+  let firstClassDiedCount = 0
+
+  onlyMen.forEach((passenger) => {
+    const el = document.createElement("div")
+    rootOnlyMen.appendChild(el)
+    el.style.height = "10px"
+    el.style.width = "10px"
+    el.style.margin = "1px"
+    if (passenger.survived == "Yes") {
+      el.style.backgroundColor = "#0080ff"
+    }
+    else {
+      el.style.backgroundColor = "#db5959"
+    }
+  });
+}
+
+// Filter: First Class Survival Stats
+function showOnlyFirstClass(onlyFirstClass) {
+  const rootOnlyFirstClass = document.getElementById("root-only-first-class")
+  rootOnlyFirstClass.style.display = "flex"
+  rootOnlyFirstClass.style.flexWrap = "wrap"
+  let firstClassSurvivedCount = 0
+  let firstClassDiedCount = 0
+
+  onlyFirstClass.forEach((passenger) => {
+    const el = document.createElement("div")
+    rootOnlyFirstClass.appendChild(el)
+    el.style.height = "10px"
+    el.style.width = "10px"
+    el.style.margin = "1px"
+    if (passenger.survived == "Yes") {
+      el.style.backgroundColor = "#738D37"
+    }
+    else {
+      el.style.backgroundColor = "#db5959"
+    }
+  });
+}
+
 function showEmbarked(fields) {
   const rootFirstC = document.getElementById("embarked-firstC")
   const rootFirstQ = document.getElementById("embarked-firstQ")
@@ -183,18 +260,18 @@ function showEmbarked(fields) {
       }
     }
   })
-  console.log(`Total first class: ${firstClassCount}`)
-  console.log(`First class C: ${firstC}`)
-  console.log(`First class Q: ${firstQ}`)
-  console.log(`First class S: ${firstS}`)
-  console.log(`Total second class: ${secondClassCount}`)
-  console.log(`Second class C: ${secondC}`)
-  console.log(`Second class Q: ${secondQ}`)
-  console.log(`Second class S: ${secondS}`)
-  console.log(`Total third class: ${thirdClassCount}`)
-  console.log(`Third class C: ${thirdC}`)
-  console.log(`Third class Q: ${thirdQ}`)
-  console.log(`Third class S: ${thirdS}`)
+  // console.log(`Total first class: ${firstClassCount}`)
+  // console.log(`First class C: ${firstC}`)
+  // console.log(`First class Q: ${firstQ}`)
+  // console.log(`First class S: ${firstS}`)
+  // console.log(`Total second class: ${secondClassCount}`)
+  // console.log(`Second class C: ${secondC}`)
+  // console.log(`Second class Q: ${secondQ}`)
+  // console.log(`Second class S: ${secondS}`)
+  // console.log(`Total third class: ${thirdClassCount}`)
+  // console.log(`Third class C: ${thirdC}`)
+  // console.log(`Third class Q: ${thirdQ}`)
+  // console.log(`Third class S: ${thirdS}`)
 
   rootFirstC.style.backgroundColor = "red"
   rootFirstC.style.height = `${normalize(firstC, firstClassCount)}px`

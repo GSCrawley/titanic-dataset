@@ -7,7 +7,7 @@
   </head>
   <body>
 
-    <h1 style="text-align:center">Data Visualization For "Titanic" Dataset</h1>
+    <h1 style="text-align:center">Static Visualization For "Titanic" Dataset</h1>
 
     <div class="passenger-survival-stats">
       <h2>Passenger Survival Stats</h2>
@@ -50,30 +50,22 @@
         <span style="display:inline-block;height:10px;width:10px;background-color:#D62B83"></span>
         Third Class Count: <span id="third-class-count"></span>
       </p>
-
     </div>
 
-    <!-- <div class="embark-by-class-stats">
-      <h2>Embarcation By Class Stats</h2>
-      <div class="embark-container">
-        <div class="first-embarked">
-          <div style="backgroundColor:red;height:200px" id="embarked-firstC"></div>
-          <div id="embarked-firstQ"></div>
-          <div id="embarked-firstS"></div>
-        </div>
-        <div class="second-embarked">
-          <div id="embarked-secondC"></div>
-          <div id="embarked-secondQ"></div>
-          <div id="embarked-secondS"></div>
-        </div>
-        <div class="third-embarked">
-          <div id="embarked-thirdC"></div>
-          <div id="embarked-thirdQ"></div>
-          <div id="embarked-thirdS"></div>
-        </div>
-      </div>
+    <div class="passenger-only-women">
+      <h2>Passenger Survival Stats (Only Women)</h2>
+      <div id="root-only-women"></div>
+    </div>
 
-    </div> -->
+    <div class="passenger-only-men">
+      <h2>Passenger Survival Stats (Only Men)</h2>
+      <div id="root-only-men"></div>
+    </div>
+
+    <div class="passenger-only-first-class">
+      <h2>Passenger Survival Stats (Only First Class)</h2>
+      <div id="root-only-first-class"></div>
+    </div>
 
 
     <script src="titanic-1.js"></script>
